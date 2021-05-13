@@ -291,6 +291,94 @@ var Toolkit = (function() {
         }
     }
 
+    var Scrollbar = function() {
+        var scrollbar = draw.group();
+        var outline = scrollbar.rect(20,300).stroke({color: 'black'}).fill('none').move(100, 700);
+        var inner = scrollbar.rect(14,100).stroke({color: 'black'}).fill('red').move(103, 720);
+        var up = scrollbar.polyline([
+            [110, 705], 
+            [115, 715], 
+            [105, 715], 
+            [110, 705]
+        ]).stroke('black').fill('black'); 
+        var down = scrollbar.polyline([ 
+            [105, 985], 
+            [115, 985], 
+            [110, 995],
+            [105, 985],
+        ]).stroke('black').fill('black'); 
+
+        up.click(function(event) {
+            let newYPos = inner.y() - 5;
+            if (newYPos < (outline.y() + 20)) {
+                // Don't move
+            }
+            else {
+                inner.move(inner.x(), inner.y()-5);
+            }
+        });
+
+        down.click(function(event) {
+            let newYPos = inner.y() + 5;
+            if (newYPos + inner.height() > ((outline.y() + outline.height()) - 20)) {
+                // Don't move
+            }
+            else {
+                inner.move(inner.x(), inner.y()+5);
+            }
+        });
+
+        var move = false;
+
+        inner.mousedown(function(event){
+            event.preventDefault();
+            console.log("mouse down");
+            move = true;
+        });
+        inner.mouseup(function(event){
+            console.log("mouse up");
+            move = false;
+            inner.fill('green');
+        });
+        var prevY = 0;
+        inner.mousemove(function(event) {
+            event.preventDefault();
+            let yPos = inner.y();
+            let newYPos;
+            if (move == true) {
+                console.log("pageY: " + event.pageY);
+                console.log("prevY: " + prevY);
+                if (event.pageY > prevY) {
+                    console.log("going down");
+                    prevY = event.pageY;
+                    newYPos = inner.y() + 3;
+                    if (newYPos + inner.height() > ((outline.y() + outline.height()) - 20)) {
+                        // Don't move
+                    }
+                    else {
+                        inner.move(inner.x(), inner.y()+3);
+                    }
+                }
+                else {
+                    console.log("going up");
+                    prevY = event.pageY;
+                    let newYPos = inner.y() - 3;
+                    if (newYPos < (outline.y() + 20)) {
+                        // Don't move
+                    }
+                    else {
+                        inner.move(inner.x(), inner.y()-3);
+                    }
+                }
+                
+                inner.fill('blue');
+            }
+            else {
+                console.log("don't move");
+            }
+        });
+    }
+
     var ProgressBar = function() {
         var progressBar = draw.group()
         var outlineWidth = 300;
@@ -426,6 +514,7 @@ var Toolkit = (function() {
         Checkbox,
         RadioButton,
         Textbox,
+        Scrollbar,
         ProgressBar,
         Tooltip
     }

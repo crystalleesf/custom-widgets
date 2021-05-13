@@ -42,6 +42,9 @@ textbox.onTextChange(function() {
 	console.log("The text has changed in the textbox");
 });
 
+// Scroll Bar
+var scrollbar = new Toolkit.Scrollbar;
+
 
 // Progress Bar
 var progressBar = new Toolkit.ProgressBar;
