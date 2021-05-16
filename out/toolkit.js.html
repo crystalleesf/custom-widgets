@@ -1,4 +1,47 @@
-import {SVG} from './svg.min.js';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: toolkit.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Toolkit Demo</a>     
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="/">Demo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Documentation</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <h1 class="page-title">Source: toolkit.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {SVG} from './svg.min.js';
 
 var Toolkit = (function() {
     var draw = SVG().addTo('body').size('1300px','1000px');
@@ -238,7 +281,7 @@ var Toolkit = (function() {
                 let i,j,k;
                 let bound = Math.min(num, labels.length);
                 let containerHeight = container.height();
-                for (i=0; i<bound; i++) {
+                for (i=0; i&lt;bound; i++) {
                     var temp;
                     var inner;
                     if (i == 0) {
@@ -256,7 +299,7 @@ var Toolkit = (function() {
                     containerHeight += 20;
                     container.height(containerHeight);
                 }
-                for (j=0; j<bound; j++) {
+                for (j=0; j&lt;bound; j++) {
                     innerArr[j].click(function(event){
                         if(clickEvent != null) {
                             clickEvent(event);
@@ -277,7 +320,7 @@ var Toolkit = (function() {
                         }
                     });
                 }
-                for (k=0; k < bound; k++) {
+                for (k=0; k &lt; bound; k++) {
                     var temp = radioButtons.text(labels[k]).fill('black').font('family', 'Menlo').move(startLabelX, startLabelY);
                     buttonArr[k].attr('label', labels[k]);
                     startLabelY += 50;
@@ -406,7 +449,7 @@ var Toolkit = (function() {
         ]).stroke('black').fill('black'); 
         up.click(function(event) {
             let newYPos = inner.y() - 5;
-            if (newYPos < (outline.y() + 20)) {
+            if (newYPos &lt; (outline.y() + 20)) {
                 // Don't move
             }
             else {
@@ -464,11 +507,11 @@ var Toolkit = (function() {
                     }
                     prevY = event.clientY;
                     newYPos = inner.y() + 2;
-                    if (newYPos + inner.height() <= ((outline.y() + outline.height()) - 20)) {
+                    if (newYPos + inner.height() &lt;= ((outline.y() + outline.height()) - 20)) {
                         inner.dy(2);
                     }
                 }
-                else if (event.clientY < prevY) {
+                else if (event.clientY &lt; prevY) {
                     if (scrollEvent != null) {
                         scrollEvent(event);
                         console.log("Scrollbar moving up");
@@ -580,7 +623,7 @@ var Toolkit = (function() {
         var increment = 10;
         plus.click(function(event){
             let newWidth = progress.width() + increment
-            if (outlineWidth - newWidth <= 5) {
+            if (outlineWidth - newWidth &lt;= 5) {
                 progress.width(outlineWidth - 4);
             }
             else {
@@ -594,7 +637,7 @@ var Toolkit = (function() {
 
         minus.click(function(event) {
             let newWidth = progress.width() - increment
-            if (newWidth <= 0) {
+            if (newWidth &lt;= 0) {
                 progress.width(0);
             }
             else {
@@ -770,4 +813,26 @@ var Toolkit = (function() {
     }
 }());
 
-export{Toolkit}
+export{Toolkit}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#getCheckboxStatus">getCheckboxStatus</a></li><li><a href="global.html#getIncrementValue">getIncrementValue</a></li><li><a href="global.html#getThumbPosition">getThumbPosition</a></li><li><a href="global.html#getToggleStatus">getToggleStatus</a></li><li><a href="global.html#onBtnClick">onBtnClick</a></li><li><a href="global.html#onBtnMouseOver">onBtnMouseOver</a></li><li><a href="global.html#onCheckboxClick">onCheckboxClick</a></li><li><a href="global.html#onCheckboxMouseOver">onCheckboxMouseOver</a></li><li><a href="global.html#onDecrement">onDecrement</a></li><li><a href="global.html#onIncrement">onIncrement</a></li><li><a href="global.html#onProgressBarMouseOver">onProgressBarMouseOver</a></li><li><a href="global.html#onRadioClick">onRadioClick</a></li><li><a href="global.html#onRadioHover">onRadioHover</a></li><li><a href="global.html#onScroll">onScroll</a></li><li><a href="global.html#onScrollbarHover">onScrollbarHover</a></li><li><a href="global.html#onScrollbarMouseDown">onScrollbarMouseDown</a></li><li><a href="global.html#onScrollbarMouseUp">onScrollbarMouseUp</a></li><li><a href="global.html#onTextboxHover">onTextboxHover</a></li><li><a href="global.html#onTextboxTextChange">onTextboxTextChange</a></li><li><a href="global.html#onToggleClick">onToggleClick</a></li><li><a href="global.html#onToggleHover">onToggleHover</a></li><li><a href="global.html#setBtnLabel">setBtnLabel</a></li><li><a href="global.html#setBtnPosition">setBtnPosition</a></li><li><a href="global.html#setBtnWidth">setBtnWidth</a></li><li><a href="global.html#setCheckboxLabel">setCheckboxLabel</a></li><li><a href="global.html#setCheckboxPosition">setCheckboxPosition</a></li><li><a href="global.html#setIncrementDecrement">setIncrementDecrement</a></li><li><a href="global.html#setIncrementValue">setIncrementValue</a></li><li><a href="global.html#setProgressBarPosition">setProgressBarPosition</a></li><li><a href="global.html#setProgressBarWidth">setProgressBarWidth</a></li><li><a href="global.html#setRadioButtons">setRadioButtons</a></li><li><a href="global.html#setRadioPosition">setRadioPosition</a></li><li><a href="global.html#setScrollbarHeight">setScrollbarHeight</a></li><li><a href="global.html#setScrollbarPosition">setScrollbarPosition</a></li><li><a href="global.html#setTextboxPosition">setTextboxPosition</a></li><li><a href="global.html#setTextboxText">setTextboxText</a></li><li><a href="global.html#setTextboxWidth">setTextboxWidth</a></li><li><a href="global.html#setTogglePosition">setTogglePosition</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun May 16 2021 16:46:29 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
