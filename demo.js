@@ -29,6 +29,8 @@ checkbox.setCheckboxLabel("Enrolled in INF 134");
 // Radio Buttons
 var radioButtons = new Toolkit.RadioButton;
 radioButtons.setRadioPosition(100,300);
+radioButtons.setRadioButtonsContainerTitlePosition(185,310);
+radioButtons.setRadioButtonsContainerTitle("Radio Buttons");
 radioButtons.setRadioButtons(5, ["Radio 1", "Radio 2", "Radio 3", "Radio 4", "Radio 5"])
 radioButtons.onRadioClick(function(e){
 	
@@ -56,7 +58,7 @@ var scrollbar = new Toolkit.Scrollbar;
 scrollbar.setScrollbarPosition(600,300);
 scrollbar.setScrollbarHeight(300);
 var pos = scrollbar.getThumbPosition();
-console.log("Thumb Position: " + pos);
+console.log("Scrollbar Thumb Position: " + pos);
 scrollbar.onScroll(function(e) {
 	
 });

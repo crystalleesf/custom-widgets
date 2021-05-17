@@ -216,6 +216,21 @@ var Toolkit = (function() {
                 startLabelY = y + 60;
             },
             /**
+             * Sets the title of the container
+             * @param  {string} val - container title
+             */
+            setRadioButtonsContainerTitle: function(val) {
+                title.text(val);
+            },
+            /**
+             * Sets the position of the container title
+             * @param  {number} x - x coordinate
+             * @param  {number} y - y coordinate
+             */
+            setRadioButtonsContainerTitlePosition: function(x, y) {
+                title.move(x,y);
+            },
+            /**
              * Exposes an event handler that notifies the consuming code when a radio button is clicked
              * @param  {function} eventHandler - click event handler
              */
@@ -406,11 +421,9 @@ var Toolkit = (function() {
         ]).stroke('black').fill('black'); 
         up.click(function(event) {
             let newYPos = inner.y() - 5;
-            if (newYPos < (outline.y() + 20)) {
-                // Don't move
-            }
-            else {
+            if (newYPos >= (outline.y() + 20)) {
                 inner.move(inner.x(), inner.y()-5);
+                console.log("Scrollbar moving up");
             }
         });
         var down;
@@ -508,11 +521,9 @@ var Toolkit = (function() {
                 ]).stroke('black').fill('black');
                 down.click(function(event) {
                     let newYPos = inner.y() + 5;
-                    if (newYPos + inner.height() > ((outline.y() + outline.height()) - 20)) {
-                        // Don't move
-                    }
-                    else {
+                    if (newYPos + inner.height() <= ((outline.y() + outline.height()) - 20)) {
                         inner.move(inner.x(), inner.y()+5);
+                        console.log("Scrollbar moving down");
                     }
                 });
             },
